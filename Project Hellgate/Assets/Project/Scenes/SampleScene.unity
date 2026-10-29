@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f1dc78cee21584db8257792a8652a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+  movementDeadzone: 0.1
 --- !u!114 &395796700
 MonoBehaviour:
   m_ObjectHideFlags: 0
