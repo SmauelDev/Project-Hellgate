@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
 
     private Movement moveScript;
-    public float movementDeadzone = 0.2f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,29 +12,19 @@ public class PlayerInput : MonoBehaviour
         moveScript = GetComponent<Movement>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Called when inputs change - public so Player Input component can find it
+    public void OnMove(InputValue value)
     {
-        float xInput = Input.GetAxisRaw("Horizontal");
-        float yInput = Input.GetAxisRaw("Vertical");
-        Vector2 inputDirection = new Vector2(xInput, yInput);
+        // Gets input Vector2 from Player Input component
+        Vector2 inputDirection = value.Get<Vector2>();
 
-        // sends inputDirection vector to movement script
-        if (inputDirection.magnitude < movementDeadzone)
-        {
-            inputDirection = Vector2.zero;
-        }
-
-        else {
-            inputDirection.Normalize();
-        }
+        // Sends inputDirection to Movement script
         moveScript.SetMoveDirection(inputDirection);
 
-
-        // total debug shiiiii
-        if (Mathf.Abs(xInput) > 0.1f || Mathf.Abs(yInput) > 0.1f)
+        // Debug output appearing when moving
+        if (inputDirection.magnitude > 0.1f)
         {
-            Debug.Log($"X={xInput:F2}, Y={yInput:F2}");
+            Debug.Log($"X={inputDirection.x:F2}, Y={inputDirection.y:F2}");
         }
     }
 }
