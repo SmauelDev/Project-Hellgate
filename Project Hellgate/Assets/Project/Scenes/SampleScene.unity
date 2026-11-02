@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 571954387}
   - component: {fileID: 571954386}
   - component: {fileID: 571954388}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +751,7 @@ GameObject:
   - component: {fileID: 764487633}
   - component: {fileID: 764487632}
   - component: {fileID: 764487634}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -980,7 +980,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1333004044}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 1474130175}
   - component: {fileID: 1474130174}
   - component: {fileID: 1474130176}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1156,7 +1156,7 @@ GameObject:
   - component: {fileID: 1740200670}
   - component: {fileID: 1740200669}
   - component: {fileID: 1740200671}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
