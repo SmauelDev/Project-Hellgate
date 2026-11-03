@@ -6,12 +6,16 @@ public class PlayerInput : MonoBehaviour
 
     private Movement moveScript;
     private RangeAim aimScript;
+    Camera cam;
+    private UnityEngine.InputSystem.PlayerInput input;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         moveScript = GetComponent<Movement>();
         aimScript = GetComponent<RangeAim>();
+        cam = Camera.main;
+        input = GetComponent<UnityEngine.InputSystem.PlayerInput>(); // had to directly call unity's playerinput component since my own script has the same name :/ will not make the same mistake again
     }
 
     // Called when movement inputs change - public so Player Input component can find it
@@ -33,9 +37,19 @@ public class PlayerInput : MonoBehaviour
     // Called when aim inputs change
     public void OnAim(InputValue value)
     {
-        Vector2 aimInput = value.Get<Vector2>();
-        
-        aimScript.SetAim(aimInput);
-
+        // mouse and controller have different vector2 values (mouse - pixel positions, controller - joystick tilt direction)
+        Debug.Log("Control scheme rn:" + input.currentControlScheme);
+        if (input.currentControlScheme == "Keyboard&Mouse")
+        {
+            Vector2 cursorPos = value.Get<Vector2>(); 
+            Vector3 mousePos = cam.ScreenToWorldPoint(cursorPos); // screentoworldpoint returns vector3
+            Vector2 mouseInput = (Vector2)mousePos - (Vector2)transform.position; // so have to convert back to vector2 for setaim
+            aimScript.SetAim(mouseInput);
+        }
+        else if (input.currentControlScheme == "Gamepad")
+        {
+            Vector2 controllerInput = value.Get<Vector2>();
+            aimScript.SetAim(controllerInput);
+        }
     }
 }
