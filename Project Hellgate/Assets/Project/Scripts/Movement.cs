@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float moveSpeed = 1f;
+    [SerializeField] private float moveSpeed = 1f;
     private Rigidbody2D body;
     private Vector2 moveDirection;
 

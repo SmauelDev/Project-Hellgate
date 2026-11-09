@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class RangeAim : MonoBehaviour
 {
-    public Transform weapon;
-    public float weaponDistance = 0.4f;
+    [SerializeField] private Transform weapon;
+    [SerializeField] private float weaponDistance = 0.4f;
     private Vector2 aimDirection = Vector2.up;
 
     // recieves vector2 storing the direction player is aiming
